@@ -15,6 +15,14 @@ function M.config()
     "pyright",
     "bashls",
     "jsonls",
+    "ansiblels",
+    "clangd",
+    "dockerls",
+    "marksman",
+    "sqlls",
+    "terraformls",
+    "gopls",
+    "yamlls",
   }
 
   require("mason").setup {

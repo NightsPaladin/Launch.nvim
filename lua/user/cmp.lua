@@ -29,8 +29,11 @@ local M = {
     {
       "L3MON4D3/LuaSnip",
       event = "InsertEnter",
+      version = "v2.*",
+      build = "make install_jsregexp",
       dependencies = {
         "rafamadriz/friendly-snippets",
+        "mireq/luasnip-snippets",
       },
     },
     {
@@ -43,8 +46,8 @@ function M.config()
   local cmp = require "cmp"
   local luasnip = require "luasnip"
   require("luasnip/loaders/from_vscode").lazy_load()
+  require("luasnip_snippets.common.snip_utils").setup()
 
-  vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = "#6CC644" })
   vim.api.nvim_set_hl(0, "CmpItemKindTabnine", { fg = "#CA42F0" })
   vim.api.nvim_set_hl(0, "CmpItemKindEmoji", { fg = "#FDE030" })
 
@@ -75,7 +78,7 @@ function M.config()
       },
       -- Accept currently selected item. If none selected, `select` first item.
       -- Set `select` to `false` to only confirm explicitly selected items.
-      ["<CR>"] = cmp.mapping.confirm { select = true },
+      ["<CR>"] = cmp.mapping.confirm { select = false },
       ["<Tab>"] = cmp.mapping(function(fallback)
         if cmp.visible() then
           cmp.select_next_item()
@@ -108,6 +111,7 @@ function M.config()
       }),
     },
     formatting = {
+      expandable_indicator = true,
       fields = { "kind", "abbr", "menu" },
       format = function(entry, vim_item)
         vim_item.kind = icons.kind[vim_item.kind]
@@ -134,7 +138,6 @@ function M.config()
       end,
     },
     sources = {
-      { name = "copilot" },
       { name = "nvim_lsp" },
       { name = "luasnip" },
       { name = "cmp_tabnine" },

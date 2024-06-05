@@ -23,6 +23,9 @@ M.config = function()
       "<cmd>Gitsigns diffthis HEAD<cr>",
       "Git Diff",
     },
+    ["<leader>go"] = { "<cmd>Telescope git_status<cr>", "Open changed file" },
+		["<leader>gb"] = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
+		["<leader>gc"] = { "<cmd>Telescope git_commits<cr>", "Checkout commit" },
   }
 
   require("gitsigns").setup {
