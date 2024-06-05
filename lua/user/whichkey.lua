@@ -4,9 +4,11 @@ local M = {
 
 function M.config()
   local mappings = {
+    w = { "<cmd>w!<CR>", "Save" },
     q = { "<cmd>confirm q<CR>", "Quit" },
     h = { "<cmd>nohlsearch<CR>", "NOHL" },
-    [";"] = { "<cmd>tabnew | terminal<CR>", "Term" },
+    ["0"] = { "<cmd>set invnumber<CR>", "Toggle Line Numbers" },
+    -- [";"] = { "<cmd>tabnew | terminal<CR>", "Term" }, -- Removed as I don't want tabbed terminals
     v = { "<cmd>vsplit<CR>", "Split" },
     b = { name = "Buffers" },
     d = { name = "Debug" },
@@ -14,15 +16,16 @@ function M.config()
     g = { name = "Git" },
     l = { name = "LSP" },
     p = { name = "Plugins" },
+    s = { name = "Settings" },
     t = { name = "Test" },
-    a = {
-      name = "Tab",
-      n = { "<cmd>$tabnew<cr>", "New Empty Tab" },
-      N = { "<cmd>tabnew %<cr>", "New Tab" },
-      o = { "<cmd>tabonly<cr>", "Only" },
-      h = { "<cmd>-tabmove<cr>", "Move Left" },
-      l = { "<cmd>+tabmove<cr>", "Move Right" },
-    },
+    -- a = {
+    --   name = "Tab",
+    --   n = { "<cmd>$tabnew<cr>", "New Empty Tab" },
+    --   N = { "<cmd>tabnew %<cr>", "New Tab" },
+    --   o = { "<cmd>tabonly<cr>", "Only" },
+    --   h = { "<cmd>-tabmove<cr>", "Move Left" },
+    --   l = { "<cmd>+tabmove<cr>", "Move Right" },
+    -- },
     T = { name = "Treesitter" },
   }
 

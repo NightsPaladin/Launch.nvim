@@ -8,22 +8,38 @@ local M = {
   },
 }
 
+-- Set local buffer keys
+-- Parameters/Args:
+--  bufnr = buffer
+--  mode = editor mode (normal, visual, insert)
+--  lhs = key to map to
+--  rhs = actual feature or function to call
+--  desc = description
+--  opts = options to set such as noremap or silent
+local function keymap(bufnr, mode, lhs, rhs, desc, opts)
+  local set_key = vim.api.nvim_buf_set_keymap
+
+  opts["desc"] = desc
+  set_key(bufnr, mode, lhs, rhs, opts)
+end
+
 local function lsp_keymaps(bufnr)
   local opts = { noremap = true, silent = true }
-  local keymap = vim.api.nvim_buf_set_keymap
-  keymap(bufnr, "n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
-  keymap(bufnr, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
-  keymap(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
-  keymap(bufnr, "n", "gI", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
-  keymap(bufnr, "n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
-  keymap(bufnr, "n", "gl", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
+  -- local keymap = vim.api.nvim_buf_set_keymap
+  keymap(bufnr, "n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", "Goto Declaration", opts)
+	keymap(bufnr, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", "Goto Definition", opts)
+	keymap(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", "", opts)
+	keymap(bufnr, "n", "gI", "<cmd>lua vim.lsp.buf.implementation()<CR>", "Goto Implemention", opts)
+	keymap(bufnr, "n", "gs", "<cmd>lua vim.lsp.buf.signature_help()<CR>", "Signature Help", opts)
+	keymap(bufnr, "n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", "Goto References", opts)
+	keymap(bufnr, "n", "gl", "<cmd>lua vim.diagnostic.open_float(0, {scope='line'})<CR>", "Show Line Diagnostics", opts)
 end
 
 M.on_attach = function(client, bufnr)
   lsp_keymaps(bufnr)
 
   if client.supports_method "textDocument/inlayHint" then
-    vim.lsp.inlay_hint.enable(bufnr, true)
+    vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
   end
 end
 
@@ -35,7 +51,7 @@ end
 
 M.toggle_inlay_hints = function()
   local bufnr = vim.api.nvim_get_current_buf()
-  vim.lsp.inlay_hint.enable(bufnr, not vim.lsp.inlay_hint.is_enabled(bufnr))
+  vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = bufnr }))
 end
 
 function M.config()
@@ -53,6 +69,7 @@ function M.config()
     ["<leader>ll"] = { "<cmd>lua vim.lsp.codelens.run()<cr>", "CodeLens Action" },
     ["<leader>lq"] = { "<cmd>lua vim.diagnostic.setloclist()<cr>", "Quickfix" },
     ["<leader>lr"] = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
+    ["<leader>lw"] = { "<cmd>Telescope diagnostics<CR>", "Workspace Diagnostics" },
   }
 
   wk.register {
@@ -70,11 +87,16 @@ function M.config()
     "cssls",
     "html",
     "tsserver",
-    "eslint",
-    "tsserver",
     "pyright",
     "bashls",
     "jsonls",
+    "ansiblels",
+    "clangd",
+    "dockerls",
+    "marksman",
+    "sqlls",
+    "terraformls",
+    "gopls",
     "yamlls",
   }
 
