@@ -266,6 +266,11 @@ function M.config()
           }),
       },
 
+      git_status = {
+        previewer = false,
+        mappings = multi_open_mappings,
+      },
+
       planets = {
         show_pluto = true,
         show_moon = true,
