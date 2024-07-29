@@ -35,7 +35,7 @@ function M.config()
 
   local exec_toggle = function(opts)
     local Terminal = require("toggleterm.terminal").Terminal
-    local term = Terminal:new { cmd = opts.cmd, count = opts.count, direction = opts.direction }
+    local term = Terminal:new { cmd = opts.cmd, count = opts.count, direction = opts.direction, dir = vim.fn.expand('%:p:h'), env = vim.fn.environ()}
     term:toggle(opts.size, opts.direction)
   end
 

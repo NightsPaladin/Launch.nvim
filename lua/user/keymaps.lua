@@ -58,8 +58,8 @@ keymap("n", "<Leader><Left>", ":vertical resize -5<CR>", opts)
 keymap("n", "<Leader><Right>", ":vertical resize +5<CR>", opts)
 
 -- Move text up and down
-keymap("n", "<C-J>", "<Esc>:m .+1<CR>==gi", opts)
-keymap("n", "<C-K>", "<Esc>:m .-2<CR>==gi", opts)
+keymap("n", "<C-S-j>", "<Esc>:m .+1<CR>==gi", opts)
+keymap("n", "<C-S-k>", "<Esc>:m .-2<CR>==gi", opts)
 
 -- Press jk fast to exit insert mode
 keymap("i", "jk", "<ESC>", opts)
