@@ -10,29 +10,27 @@ local M = {
 
 function M.config()
   local wk = require "which-key"
-  wk.register({
-    z = {
-      name = "Telekasten",
-      z = { "<cmd>Telekasten panel<CR>", "Telekasten Panel" },
-      n = { "<cmd>Telekasten new_note<CR>", "New Note" },
-      N = { "<cmd>Telekasten new_templated_note<CR>", "New Templated Note" },
-      c = { "<cmd>Telekasten show_calendar<CR>", "Show Calendar" },
-      C = { "<cmd>CalendarT<CR>", "Show Calendar (Fullscreen)" },
-      f = { "<cmd>Telekasten find_notes<CR>", "Find Notes" },
-      d = { "<cmd>Telekasten find_daily_notes<CR>", "Find Daily Notes" },
-      g = { "<cmd>Telekasten search_notes<CR>", "Search Notes" },
-      l = { "<cmd>Telekasten follow_link<CR>", "Follow Link" },
-      T = { "<cmd>Telekasten goto_today<CR>", "Goto Today" },
-      W = { "<cmd>Telekasten goto_thisweek<CR>", "Goto This Week" },
-      w = { "<cmd>Telekasten find_weekly_notes<CR>", "Find Weekly Note" },
-      t = { "<cmd>Telekasten toggle_todo<CR>", "Add Todo Item" },
-      a = { "<cmd>Telekasten show_tags<CR>", "Show Tags" },
-      b = { "<cmd>Telekasten show_backlinks<CR>", "Show Backlinks" },
-      m = { "<cmd>Telekasten browse_media<CR>", "Browse Media" },
-      p = { "<cmd>Telekasten preview_image<CR>", "Preview Image" },
-      I = { "<cmd>Telekasten insert_img_link({ i = true })<CR>", "Insert Image Link" },
-    },
-  }, { prefix = "<leader>" })
+  wk.add {
+    { "<leader>z", group = "Telekasten"},
+    { "<leader>zz", "<cmd>Telekasten panel<CR>", desc = "Telekasten Panel" },
+    { "<leader>zn", "<cmd>Telekasten new_note<CR>", desc = "New Note" },
+    { "<leader>zN", "<cmd>Telekasten new_templated_note<CR>", desc = "New Templated Note" },
+    { "<leader>zc", "<cmd>Telekasten show_calendar<CR>", desc = "Show Calendar" },
+    { "<leader>zC", "<cmd>CalendarT<CR>", desc = "Show Calendar (Fullscreen)" },
+    { "<leader>zf", "<cmd>Telekasten find_notes<CR>", desc = "Find Notes" },
+    { "<leader>zd", "<cmd>Telekasten find_daily_notes<CR>", desc = "Find Daily Notes" },
+    { "<leader>zg", "<cmd>Telekasten search_notes<CR>", desc = "Search Notes" },
+    { "<leader>zl", "<cmd>Telekasten follow_link<CR>", desc = "Follow Link" },
+    { "<leader>zT", "<cmd>Telekasten goto_today<CR>", desc = "Goto Today" },
+    { "<leader>zW", "<cmd>Telekasten goto_thisweek<CR>", desc = "Goto This Week" },
+    { "<leader>zw", "<cmd>Telekasten find_weekly_notes<CR>", desc = "Find Weekly Note" },
+    { "<leader>zt", "<cmd>Telekasten toggle_todo<CR>", desc = "Add Todo Item" },
+    { "<leader>za", "<cmd>Telekasten show_tags<CR>", desc = "Show Tags" },
+    { "<leader>zb", "<cmd>Telekasten show_backlinks<CR>", desc = "Show Backlinks" },
+    { "<leader>zm", "<cmd>Telekasten browse_media<CR>", desc = "Browse Media" },
+    { "<leader>zp", "<cmd>Telekasten preview_image<CR>", desc = "Preview Image" },
+    { "<leader>zI", "<cmd>Telekasten insert_img_link({ i = true })<CR>", desc = "Insert Image Link" },
+  }
 
   local home = vim.fn.expand("~/work/wiki")
   -- NOTE for Windows users:
