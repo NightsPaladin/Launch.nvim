@@ -1,13 +1,16 @@
 local M = {
   "folke/which-key.nvim",
+  opts = {
+    preset = "helix",
+  },
 }
 
 function M.config()
   local mappings = {
     { "<leader>w", "<cmd>w!<CR>", desc = "Save" },
     { "<leader>q", "<cmd>confirm q<CR>", desc = "Quit" },
-    { "<leader>h", "<cmd>nohlsearch<CR>", desc = "NOHL" },
-    { "<leader>0", "<cmd>set invnumber<CR>", desc = "Toggle Line Numbers" },
+    { "<leader>h", "<cmd>nohlsearch<CR>", desc = "Remove Search Highlight" },
+    { "<leader>0", "<cmd>set invnumber<CR><cmd>set invrelativenumber<CR>", desc = "Toggle Line Numbers" },
     -- { "<leader>;", "<cmd>tabnew | terminal<CR>", desc = "Term" }, -- Removed as I don't want tabbed terminals
     { "<leader>v", "<cmd>vsplit<CR>", desc = "Split" },
     { "<leader>b", group = "Buffers" },
@@ -32,26 +35,26 @@ function M.config()
 
   local which_key = require "which-key"
   which_key.setup {
-    plugins = {
-      marks = true,
-      registers = true,
-      spelling = {
-        enabled = true,
-        suggestions = 20,
-      },
-      presets = {
-        operators = false,
-        motions = false,
-        text_objects = false,
-        windows = false,
-        nav = false,
-        z = false,
-        g = false,
-      },
-    },
+    -- plugins = {
+    --   marks = true,
+    --   registers = true,
+    --   spelling = {
+    --     enabled = true,
+    --     suggestions = 20,
+    --   },
+    --   presets = {
+    --     operators = false,
+    --     motions = false,
+    --     text_objects = false,
+    --     windows = false,
+    --     nav = false,
+    --     z = false,
+    --     g = false,
+    --   },
+    -- },
     win = {
       border = "rounded",
-      position = "bottom",
+    --   position = "bottom",
       padding = { 2, 2, 2, 2 },
     },
     show_help = false,
@@ -62,12 +65,7 @@ function M.config()
     },
   }
 
-  local opts = {
-    mode = "n", -- NORMAL mode
-    prefix = "<leader>",
-  }
-
-  which_key.add(mappings, opts)
+  which_key.add(mappings)
 end
 
 return M

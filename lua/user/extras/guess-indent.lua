@@ -1,5 +1,6 @@
 local M = {
   "NMAC427/guess-indent.nvim",
+  event = { "BufReadPre" }
 }
 
 function M.config()
@@ -10,6 +11,7 @@ function M.config()
       "netrw",
       "tutor",
       "nvimtree",
+      "alpha",
     },
     buftype_exclude = { -- A list of buffer types for which the auto command gets disabled
       "help",
