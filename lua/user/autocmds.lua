@@ -83,14 +83,14 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 	end,
 })
 
-vim.api.nvim_create_autocmd({ "FileType" }, {
-	pattern = { "python" },
-	callback = function()
-		vim.opt_local.shiftwidth = 4
-		vim.opt_local.tabstop = 4
-		vim.opt_local.softtabstop = 4
-	end,
-})
+-- vim.api.nvim_create_autocmd({ "FileType" }, {
+-- 	pattern = { "python" },
+-- 	callback = function()
+-- 		vim.opt_local.shiftwidth = 4
+-- 		vim.opt_local.tabstop = 4
+-- 		vim.opt_local.softtabstop = 4
+-- 	end,
+-- })
 
 vim.api.nvim_create_autocmd({ "FileType" }, {
 	pattern = { "help" },
@@ -103,6 +103,26 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 		vim.api.nvim_set_keymap("n", "S", "?\\|\\zs\\S\\+\\ze\\|<CR>", opts)
 		vim.cmd([[ setlocal bufhidden=unload | wincmd L | vertical resize 80 ]])
 	end,
+})
+
+-- Create an autocmd group to avoid duplicate commands
+vim.api.nvim_create_augroup("FileTypeConfig", { clear = true })
+
+-- Define an autocmd for setting the filetype based on file extensions
+vim.api.nvim_create_autocmd({ "BufRead","BufNewFile"}, {
+  pattern = "*.zshrc",
+  callback = function()
+    vim.bo.filetype = "zsh"
+  end,
+  group = "FileTypeConfig",
+})
+
+vim.api.nvim_create_autocmd({ "BufRead","BufNewFile"}, {
+  pattern = "*.bashrc",
+  callback = function()
+    vim.bo.filetype = "bash"
+  end,
+  group = "FileTypeConfig",
 })
 
 vim.api.nvim_create_autocmd({ "CursorHold" }, {
