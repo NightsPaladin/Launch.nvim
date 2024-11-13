@@ -15,6 +15,7 @@ function M.config()
     { "<leader>fh", "<cmd>Telescope help_tags<cr>", desc = "Help" },
     { "<leader>fm", "<cmd>Telescope man_pages<cr>", desc = "Man Pages" },
     { "<leader>fl", "<cmd>Telescope resume<cr>", desc = "Last Search" },
+    { "<leader>fo", "<cmd>lua require('telescope.builtin').live_grep({grep_open_files=true})<cr>", desc = "Search Open Files" },
     { "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Recent File" },
     { "<leader>fk", "<cmd>Telescope keymaps<cr>", desc = "Keymaps" },
   }
