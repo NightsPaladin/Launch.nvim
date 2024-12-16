@@ -292,7 +292,6 @@ function M.config()
       buffers = {
         -- theme = "dropdown",
         previewer = false,
-        initial_mode = "normal",
         mappings = vim.tbl_deep_extend("force", multi_open_mappings,
           {
             i = {

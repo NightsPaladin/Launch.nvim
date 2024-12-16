@@ -10,7 +10,9 @@ function M.config()
     { "<leader>w", "<cmd>w!<CR>", desc = "Save" },
     { "<leader>q", "<cmd>confirm q<CR>", desc = "Quit" },
     { "<leader>h", "<cmd>nohlsearch<CR>", desc = "Remove Search Highlight" },
-    { "<leader>0", "<cmd>set invnumber<CR><cmd>set invrelativenumber<CR>", desc = "Toggle Line Numbers" },
+    { "<leader>0", group = "Toggle Line Numbers" },
+    { "<leader>0r", "<cmd>set invrelativenumber<CR>", desc = "Toggle Relative Line Numbers" },
+    { "<leader>0n", "<cmd>set invnumber<CR>", desc = "Toggle Line Numbers" },
     -- { "<leader>;", "<cmd>tabnew | terminal<CR>", desc = "Term" }, -- Removed as I don't want tabbed terminals
     { "<leader>v", "<cmd>vsplit<CR>", desc = "Split" },
     { "<leader>b", group = "Buffers" },
