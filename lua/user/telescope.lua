@@ -1,6 +1,6 @@
 local M = {
   "nvim-telescope/telescope.nvim",
-  dependencies = { { "nvim-telescope/telescope-fzf-native.nvim", build = "make", lazy = true } },
+  dependencies = { "nvim-lua/plenary.nvim" }
 }
 
 function M.config()
@@ -287,6 +287,14 @@ function M.config()
         -- theme = "dropdown",
         mappings = multi_open_mappings,
         -- previewer = false,
+        find_command = {
+          "fd",
+          ".",
+          "--type",
+          "file",
+          "--hidden",
+          "--strip-cwd-prefix",
+        }
       },
 
       buffers = {
@@ -295,7 +303,7 @@ function M.config()
         mappings = vim.tbl_deep_extend("force", multi_open_mappings,
           {
             i = {
-              ["<C-d>"] = actions.delete_buffer,
+              ["<C-S-d>"] = actions.delete_buffer,
             },
             n = {
               ["dd"] = actions.delete_buffer,
