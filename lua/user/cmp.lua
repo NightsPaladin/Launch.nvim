@@ -39,6 +39,9 @@ local M = {
     {
       "hrsh7th/cmp-nvim-lua",
     },
+    {
+      'brenoprata10/nvim-highlight-colors',
+    },
   },
 }
 
@@ -47,6 +50,7 @@ function M.config()
   local luasnip = require "luasnip"
   require("luasnip/loaders/from_vscode").lazy_load()
   require("luasnip_snippets.common.snip_utils").setup()
+  require('nvim-highlight-colors').setup()
 
   vim.api.nvim_set_hl(0, "CmpItemKindTabnine", { fg = "#CA42F0" })
   vim.api.nvim_set_hl(0, "CmpItemKindEmoji", { fg = "#FDE030" })
@@ -134,7 +138,8 @@ function M.config()
           vim_item.kind_hl_group = "CmpItemKindTabnine"
         end
 
-        return vim_item
+        return require("nvim-highlight-colors").format(entry, vim_item)
+        -- return vim_item
       end,
     },
     sources = {
