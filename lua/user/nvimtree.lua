@@ -13,11 +13,11 @@ function M.config()
 
   local function on_attach(bufnr)
     local api = require("nvim-tree.api")
-  
+
     local function opts(desc)
       return { desc = "nvim-tree: " .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
     end
-  
+
     -- Default mappings. Feel free to modify or remove as you wish.
     --
     -- BEGIN_DEFAULT_ON_ATTACH
@@ -74,7 +74,7 @@ function M.config()
     vim.keymap.set("n", "<2-LeftMouse>", api.node.open.edit, opts("Open"))
     vim.keymap.set("n", "<2-RightMouse>", api.tree.change_root_to_node, opts("CD"))
     -- END_DEFAULT_ON_ATTACH
-  
+
     -- Mappings migrated from view.mappings.list
     --
     -- You will need to insert "your code goes here" for any mappings with a custom action_cb
@@ -92,6 +92,7 @@ function M.config()
     hijack_netrw = true,
     sort_by = "name",
     sync_root_with_cwd = true,
+    respect_buf_cwd = true,
     renderer = {
       add_trailing = false,
       group_empty = false,
@@ -207,7 +208,7 @@ function M.config()
           enable = true,
           chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890",
           exclude = {
-            filetype = { 
+            filetype = {
               "netrw",
               "Jaq",
               "qf",
