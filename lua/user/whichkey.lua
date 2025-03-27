@@ -22,7 +22,9 @@ function M.config()
     { "<leader>l", group = "LSP" },
     { "<leader>p", group = "Plugins" },
     { "<leader>s", group = "Settings" },
+    { "<leader>sc", ":e ~/.config/nvim/init.lua<cr>", desc="Config"},
     { "<leader>t", group = "Test" },
+    { "<leader>T", group = "Treesitter" },
     -- Removed as I don't use tabs
     -- a = {
     --   name = "Tab",
@@ -32,7 +34,6 @@ function M.config()
     --   h = { "<cmd>-tabmove<cr>", "Move Left" },
     --   l = { "<cmd>+tabmove<cr>", "Move Right" },
     -- },
-    { "<leader>T", group = "Treesitter" },
   }
 
   local which_key = require "which-key"

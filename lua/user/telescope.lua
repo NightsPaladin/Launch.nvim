@@ -18,10 +18,11 @@ function M.config()
     { "<leader>fo", "<cmd>lua require('telescope.builtin').live_grep({grep_open_files=true})<cr>", desc = "Search Open Files" },
     { "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Recent File" },
     { "<leader>fk", "<cmd>Telescope keymaps<cr>", desc = "Keymaps" },
+    { "<leader>fs", "<cmd>Telescope symbols<cr>", desc = "Symbols" },
   }
 
   wk.add {
-    { "<leader>sc", "<cmd>Telescope colorscheme<CR>", desc = "Colorscheme" },
+    { "<leader>ss", "<cmd>Telescope colorscheme<CR>", desc = "Color Scheme" },
   }
 
   local icons = require "user.icons"
