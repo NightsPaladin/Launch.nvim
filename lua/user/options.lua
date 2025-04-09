@@ -60,7 +60,7 @@ vim.opt.wildignore = { -- Automatically ignore the following file types
 	}
 
 vim.opt.shortmess:append "c"
-vim.opt.iskeyword:append("-") -- hyphenated words recognized by searches
+-- vim.opt.iskeyword:append("-") -- hyphenated words recognized by searches
 vim.opt.runtimepath:remove("/usr/share/vim/vimfiles") -- separate vim plugins from neovim in case vim still in use
 
 -- Disable providers we do not care about
@@ -68,7 +68,7 @@ vim.g.loaded_ruby_provider = 0
 vim.g.loaded_perl_provider = 0
 
 vim.cmd "set whichwrap+=<,>,[,],h,l"
-vim.cmd [[set iskeyword+=-]]
+-- vim.cmd [[set iskeyword+=-]]
 
 vim.g.netrw_banner = 0
 vim.g.netrw_mouse = 2
