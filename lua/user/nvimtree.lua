@@ -191,7 +191,7 @@ function M.config()
     git = {
       enable = true,
       ignore = true,
-      timeout = 500,
+      timeout = 5000,
     },
 
     actions = {
